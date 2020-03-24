@@ -79,6 +79,8 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
+import cn.dxs.zdjl.utils.L;
+
 public class MainFunctions {
     private static final String TAG = "MyAccessibilityService";
     private static final String CONTROL_LIGHTNESS = "control_lightness";
@@ -96,9 +98,9 @@ public class MainFunctions {
     private static final String KEY_WORD_LIST = "keyWordList";
     private boolean double_press;
     private boolean is_release_up, is_release_down;
-    private boolean skip_advertising, record_message;
-    private boolean control_lightness, control_lock;
-    private boolean control_music, control_music_only_lock;
+    private boolean skip_advertising, record_message;// 跳过开屏广告，记录通知消息
+    private boolean control_lightness, control_lock;// 调节屏幕亮度，双击屏幕锁屏
+    private boolean control_music, control_music_only_lock;// 音量键切音频，
     private boolean is_state_change_a, is_state_change_b, is_state_change_c;
     private long star_up, star_down;
     private int win_state_count, vibration_strength;
@@ -730,9 +732,11 @@ public class MainFunctions {
         switch_screen_lightness.setChecked(control_lightness);
         switch_screen_lock.setChecked(control_lock && (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P || devicePolicyManager.isAdminActive(componentName)));
 
+        // 跳过开屏广告
         switch_skip_advertising.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
+                // 跳过开屏广告 控件 dialog_adv
                 final View view = inflater.inflate(R.layout.skipdesc_parent, null);
                 final AlertDialog dialog_adv = new AlertDialog.Builder(service).setView(view).create();
                 final LinearLayout parentView = view.findViewById(R.id.skip_desc);
@@ -870,6 +874,7 @@ public class MainFunctions {
                     }
                 }
 
+                // 跳过开屏广告->设置白名单
                 chooseButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -980,6 +985,7 @@ public class MainFunctions {
                     }
                 });
 
+                // 跳过开屏广告->添加广告页
                 addButton.setOnClickListener(new View.OnClickListener() {
                     WidgetButtonDescribe widgetDescribe;
                     SkipPositionDescribe positionDescribe;
@@ -987,6 +993,7 @@ public class MainFunctions {
                     @SuppressLint("ClickableViewAccessibility")
                     @Override
                     public void onClick(View v) {
+                        // target_xy显示准心，adv_view添加广告页，layout_win显示布局
                         if (target_xy != null || adv_view != null || layout_win != null) {
                             dialog_adv.dismiss();
                             return;
@@ -1000,10 +1007,15 @@ public class MainFunctions {
                         final TextView actName = adv_view.findViewById(R.id.actName);
                         final TextView widget = adv_view.findViewById(R.id.widget);
                         final TextView xyP = adv_view.findViewById(R.id.xy);
+                        // 显示布局
                         Button switchWid = adv_view.findViewById(R.id.switch_wid);
+                        // 添加控件
                         final Button saveWidgetButton = adv_view.findViewById(R.id.save_wid);
+                        // 显示准心
                         Button switchAim = adv_view.findViewById(R.id.switch_aim);
+                        // 添加坐标
                         final Button savePositionButton = adv_view.findViewById(R.id.save_aim);
+                        // 退出
                         Button quitButton = adv_view.findViewById(R.id.quit);
 
                         layout_win = inflater.inflate(R.layout.accessibilitynode_desc, null);
@@ -1042,6 +1054,7 @@ public class MainFunctions {
                         cParams.y = (metrics.heightPixels - cParams.height) / 2;
                         cParams.alpha = 0f;
 
+                        // 添加广告页自身的拖动监听
                         adv_view.setOnTouchListener(new View.OnTouchListener() {
                             int x = 0, y = 0;
 
@@ -1063,6 +1076,7 @@ public class MainFunctions {
                                 return true;
                             }
                         });
+                        // 显示准心/隐藏准心
                         target_xy.setOnTouchListener(new View.OnTouchListener() {
                             int x = 0, y = 0, width = cParams.width / 2, height = cParams.height / 2;
 
@@ -1098,6 +1112,7 @@ public class MainFunctions {
                                 return true;
                             }
                         });
+                        // 显示布局/隐藏布局
                         switchWid.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -1245,6 +1260,8 @@ public class MainFunctions {
                         dialog_adv.dismiss();
                     }
                 });
+
+                // 跳过开屏广告->添加关键字
                 keyButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -1330,6 +1347,7 @@ public class MainFunctions {
             }
         });
 
+        // 音量键切音频
         switch_music_control.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -1340,6 +1358,7 @@ public class MainFunctions {
                 seekBar.setProgress(vibration_strength);
                 checkLock.setChecked(control_music_only_lock);
                 checkSys.setChecked(mediaButtonControl.support_SysMusic);
+                // 调节振动反馈强度
                 seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                     @Override
                     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -1354,14 +1373,15 @@ public class MainFunctions {
                     public void onStopTrackingTouch(SeekBar seekBar) {
                     }
                 });
+
                 CompoundButton.OnCheckedChangeListener onCheckedChangeListener = new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                         switch (compoundButton.getId()) {
-                            case R.id.check_lock:
+                            case R.id.check_lock:// 仅在锁屏时生效
                                 control_music_only_lock = b;
                                 break;
-                            case R.id.check_sys:
+                            case R.id.check_sys:// 添加对系统自带播放器的支持
                                 mediaButtonControl.support_SysMusic = b;
                                 break;
                         }
@@ -1393,6 +1413,8 @@ public class MainFunctions {
                 return true;
             }
         });
+
+        // 记录通知消息
         switch_record_message.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -1559,6 +1581,8 @@ public class MainFunctions {
                 return true;
             }
         });
+
+        // 调节屏幕亮度
         switch_screen_lightness.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
@@ -1567,6 +1591,8 @@ public class MainFunctions {
                 return true;
             }
         });
+
+        // 双击屏幕锁屏
         switch_screen_lock.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
@@ -1587,6 +1613,8 @@ public class MainFunctions {
                 }
             }
         });
+
+        // 设置
         bt_set.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -1596,6 +1624,8 @@ public class MainFunctions {
                 dialog_main.dismiss();
             }
         });
+
+        // 帮助
         bt_look.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -1605,12 +1635,14 @@ public class MainFunctions {
                 dialog_main.dismiss();
             }
         });
+        // 取消
         bt_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog_main.dismiss();
             }
         });
+        // 确定
         bt_sure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
