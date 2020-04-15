@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#eeeeee"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#292c34">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="选择运行模式"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/button_style_black"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="X"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="制作、运行脚本前，请先选择运行模式："
+        android:textColor="#000000" />
+
+    <RadioGroup
+        android:id="@+id/rg_runMode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:weightSum="4">
+
+        <RadioButton
+            android:id="@+id/rb_systemAssist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="系统辅助"
+            android:textColor="#000000" />
+
+        <RadioButton
+            android:id="@+id/rb_virtualSpace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="虚拟空间"
+            android:textColor="#000000" />
+
+        <RadioButton
+            android:id="@+id/rb_coreService"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="核心服务"
+            android:textColor="#000000" />
+
+        <RadioButton
+            android:id="@+id/rb_root"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="ROOT"
+            android:textColor="#000000" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/tv_systemAssist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:minHeight="70dp"
+        android:text="推荐使用。\n根据提示开启系统设置的 无障碍/辅助功能 里的自动精灵后即可使用，可在当前空间使用自动精灵。\n仅Android7及以上系统可以使用这个模式。"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/tv_virtualSpace"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:minHeight="80dp"
+        android:text="选虚拟空间模式仅能在虚拟空间中使用自动精灵。\n虚拟空间应用数据与当前空间隔离，但会有部分软件不兼容。\n此模式对手机性能要求较高。"
+        android:textColor="#000000"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_coreService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:minHeight="80dp"
+        android:text="使用“核心服务”可以在当前空间使用自动精灵。\n首次使用需连接电脑，由自动精灵PC助手启动“核心服务”后，再确定进入。\n具体操作步骤请使用电脑访问网址：pc.54dxs.cn"
+        android:textColor="#000000"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:minHeight="80dp"
+        android:text="手机有ROOT权限后，可以在当前空间使用自动精灵\n每个手机的ROOT权限获取方法不一样，具体的ROOT方法请百度“ROOT+手机型号”"
+        android:textColor="#000000"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/btn_ok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/button_style_black"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:text="确定"
+        android:textColor="#ffffff"
+        android:textSize="16sp" />
+
+</LinearLayout>

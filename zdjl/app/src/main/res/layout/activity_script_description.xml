@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f5f5f9">
+
+    <LinearLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_script_file" />
+
+        <TextView
+            android:id="@+id/tv_scriptName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="小吃货短视频.zjs"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="基本信息"
+            android:textColor="#000000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="文件大小"
+            android:textColor="#aaaaaa"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/tv_scriptSize"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="151.0KB"
+            android:textColor="#000000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="创建时间"
+            android:textColor="#aaaaaa"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/tv_createTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2020-03-15 23:25:52"
+            android:textColor="#000000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="最近修改"
+            android:textColor="#aaaaaa"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/tv_lastModifiedTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2020-03-15 23:25:52"
+            android:textColor="#000000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="脚本预览"
+            android:textColor="#aaaaaa"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/tv_scriptPreview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="共12个动作"
+            android:textColor="#000000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="脚本适用分辨率"
+            android:textColor="#aaaaaa"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/tv_scriptApplyRatio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1080x2029@2.75（当前分辨率：1080x2029@2.75）"
+            android:textColor="#000000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="脚本描述"
+            android:textColor="#aaaaaa"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/tv_scriptDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="小吃货短视频运行脚本"
+            android:textColor="#000000" />
+
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_script_file" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#ffffffff"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/button_style_white"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="编辑"
+            android:textColor="#000000" />
+
+        <Button
+            android:id="@+id/btn_run"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/button_style_black"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="运行"
+            android:textColor="#ffffff" />
+
+        <Button
+            android:id="@+id/btn_more"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/button_style_white"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:text="更多"
+            android:textColor="#000000" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_above="@+id/bottom"
+        android:background="#aaaaaa" />
+</RelativeLayout>
