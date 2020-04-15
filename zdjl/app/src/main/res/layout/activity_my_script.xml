@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/ll_appManager_loading"
+            android:id="@+id/ll_myscript_loading"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -29,16 +29,8 @@
         </LinearLayout>
 
         <ListView
-            android:id="@+id/lv_appManager_appmanager"
+            android:id="@+id/lv_myscript_myscript"
             android:layout_width="match_parent"
             android:layout_height="match_parent"></ListView>
-
-        <TextView
-            android:id="@+id/tv_appManager_status"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#ff888888"
-            android:text="用户程序:加载中..."
-            android:textColor="#ffffff" />
     </FrameLayout>
 </LinearLayout>

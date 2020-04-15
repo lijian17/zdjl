@@ -4,5 +4,5 @@
     android:accessibilityFeedbackType="feedbackGeneric"
     android:accessibilityFlags="flagDefault"
     android:canRetrieveWindowContent="true"
-    android:description="@string/accessibility_desc"
+    android:description="@string/app_name"
     android:packageNames="cn.dxs.gitee"/>
